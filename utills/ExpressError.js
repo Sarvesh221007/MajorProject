@@ -1,20 +1,10 @@
-class ExpressError extends Error{
-    constructor(statusCode,message){
+// utils/ExpressError.js
+class ExpressError extends Error {
+    constructor(statusCode = 500, message = "Something went wrong") {
         super(message);
-        this.statusCode=statusCode;
+        this.statusCode = statusCode;
+        Error.captureStackTrace(this, this.constructor); // helpful in debugging
     }
 }
 
-module.exports=ExpressError;
-
-
-//chat gpt copy code
-// class ExpressError extends Error {
-//     constructor(statusCode = 500, message = "Something went wrong") {
-//         super(message);
-//         this.statusCode = statusCode;
-//         Error.captureStackTrace(this, this.constructor);
-//     }
-// }
-
-// module.exports = ExpressError;
+module.exports = ExpressError;
